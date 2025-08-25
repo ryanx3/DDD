@@ -8,8 +8,8 @@ export class Entity<Props> {
     return this._id
   }
 
-  constructor(props: Props, id?: string) {
+  protected constructor(props: Props, id?: UniqueEntityID) {
     this.props = props
-    this._id = new UniqueEntityID()
-  }
+    this._id = id ?? new UniqueEntityID(id)
+  } //Protected no construtor faz com que só Entity ou todas as classes que herdam ele possam chamar
 }
